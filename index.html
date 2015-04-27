@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ACME Project Management</title>
+    
+    <!-- Stylesheets -->
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/app.css" rel="stylesheet" />
+
+    <!-- Library Scripts -->
+    <script src="Scripts/angular.js"></script>
+    
+    <!-- Application Script -->
+    <script src="app/app.js"></script>
+    
+    <!-- Product Controllers-->
+    <script src="app/products/productListCtrl.js"></script>
+
+</head>
+    <body ng-app="projectManagement">
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="font-size:large">
+                Product List
+            </div>
+            <div class="panel-body">
+                <table class="table" ng-controller="ProductListCtrl as vm">
+                    <thead>
+                        <tr>
+                            <td>
+                                <button class="btn btn-primary" type="button"
+                                        ng-click="vm.toggleImage()">
+                                    {{vm.showImage ? "Hide" : "Show"}} Image
+                                </button>
+                            </td>
+                            <td>Product</td>
+                            <td>Code</td>
+                            <td>Available</td>
+                            <td>Price</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in vm.products">
+                            <td>
+                                <img ng-if="vm.showImage"
+                                     ng-src="{{product.imageUrl}}"
+                                     alt="{{product.productName}}" />
+                            </td>
+                            <td>{{product.productName}}</td>
+                            <td>{{product.productCode}}</td>
+                            <td>{{product.available}}</td>
+                            <td>{{product.price}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+            
+
+    </body>
+</html>
